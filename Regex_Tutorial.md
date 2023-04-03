@@ -20,7 +20,6 @@ In this tutorial, the following regular expression is being used for explanation
 - [Grouping Constructs](#grouping-constructs)
 - [Bracket Expressions](#bracket-expressions)
 - [Character Classes](#character-classes)
-- [The OR Operator](#the-or-operator)
 - [Flags](#flags)
 - [Character Escapes](#character-escapes)
 
@@ -34,7 +33,7 @@ Before moving in on each of the components(writing pattern), Regex is constructe
 
 As these slashes are for literal, the string inside of slashes will be searched as it written.
 
-So in our example regex, anything between two slashes will be used to idenitfy email syntax or pattern.
+So in our regex, anything between two slashes will be used to idenitfy email syntax or pattern.
 
 ### Anchors
 
@@ -135,7 +134,7 @@ The regex example we are using here shows three different sections:
     ([\da-z\.-]+)
     ([a-z\.]{2,6})
 ```
-Also notice our expression shows that it must include '@' between first group and second group, and must include '.' between second group and third group.
+Also notice our expression shows that it must include '@' between first group and second group, and must include '\\.' between second group and third group.
 
 ### Bracket Expressions
 For Bracket Expression ([]), think of the array list. Bracket expression allows us to write all of the characters we wants to include and match. 
@@ -184,16 +183,13 @@ As mentioned previously, in our example regex expression,
 ```
     /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
 ```
-in the second group bracket expression, it has '\d' which matches to number number [0-9]
+in the second group bracket expression, it has '\d' which matches to number [0-9]
 
-### The OR Operator
-
-Regex has 
 
 ### Flags
 Regex has option to add flags which provides extra functionality or limit to the expression. Unlike other regex components, flag must be added after end of the literal slash. 
 
-Belows are few options of flags:
+Belows are some options of flags:
 
 * g —Global search: the regex should be tested against all possible matches in a string.
 
@@ -201,14 +197,26 @@ Belows are few options of flags:
 
 * m —Multi-line search: a multi-line input string should be treated as multiple lines
 
-In our regex expression, it doesn't not contain any flags.
+In our regex expression, it doesn't not contain any flags, so we'll skip this part.
 
 ### Character Escapes
 
+Some characters in regex may interpreted literally, such as special character like brackets ({}, []). Therefore, we use Character Escape with backlash(\\) to prevent this.
+
+In our regex example, we use '\\.' to include period (dot) in our pattern match. Otherwise, if we include this as '.' without balckslash, regex will take this literally and consider as it '.' from one of the Character Classes.
+
+So any '\\.' included in our regex,
+```
+    /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
+```
+is stands for period(.).
 
 
 ## Author
 
-Tutorial written by Taeyoung Park, a web development student. (Github: [@TaeyoungP](https://github.com/taeyoungP), Email: taeyoung.park@uconn.edu)
+This tutorial written by Taeyoung Park, a web development student. (Github: [@TaeyoungP](https://github.com/taeyoungP), Email: taeyoung.park@uconn.edu)
 
-A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
+## Credits
+Referenced Regex information from: 
+* https://coding-boot-camp.github.io/full-stack/computer-science/regex-tutorial
+* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions 
